@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="">
+        <div class="posts row justify-content-center">
+            {% for post in object_list %}
+                <a href="{% url 'post-details' post.pk %}" class="text-decoration-none col-3 gap-3">
+                    <div class="post card">
+                        <div class="card-body">
+                            <h3>{{ post.title }}</h3>
+                            <p>{{ post.content|truncatechars:"70" }}</p>
+                            <p>{{ post.created_on }}</p>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+        <div class="post-create-btn row justify-content-center py-5">
+            <a href="{% url 'post-create' %}" class="btn btn-success col-1">Create Post</a>
+        </div>
+    </div>
+{% endblock %}
